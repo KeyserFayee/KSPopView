@@ -28,6 +28,7 @@ class KSPopView: UIView {
     let titleLabel = UILabel()
     let subTitleLabel = UILabel()
     var isPopup:Bool!
+    var bgPosition:(left:Int,bottom:Int)?
     
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: Screen_width, height: Screen_height))
@@ -76,6 +77,29 @@ class KSPopView: UIView {
         }
     }
     
+    func showTextWithPosition(textStr:String, position:(left:Int,bottom:Int)) {
+        if !isPopup {
+            isPopup = true
+            titleLabel.text = textStr
+            bgPosition = position
+            
+            setAutoLayout(.TextType)
+            self.iconView.isHidden = true
+            self.alpha = 0.0
+            weak var weakSelf:KSPopView! = self
+            UIApplication.shared.keyWindow?.insertSubview(self, at: 9999)
+            UIView.animate(withDuration: 0.2, animations: {
+                weakSelf.alpha = 1.0;
+                
+            }, completion: { (finished) -> Void in
+                let dispatchTime = DispatchTime.now() + .seconds(1)
+                DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+                    weakSelf.hiddenSelfView()
+                }
+            })
+        }
+    }
+    
     func showTextWithImage(textStr:String, image:UIImage) {
         if !isPopup {
             isPopup = true
@@ -99,16 +123,23 @@ class KSPopView: UIView {
         }
     }
     
-    func setAutoLayout (_ type:popViewType) {
+    private func setAutoLayout (_ type:popViewType) {
         
-        titleLabel.snp.removeConstraints()
-        iconView.snp.removeConstraints()
+        removeAutoLayout()
         
-        bgView.snp.makeConstraints { (make) -> Void in
-            make.centerX.equalTo(self)
-            make.centerY.equalTo(self).offset(-90)
+        if bgPosition?.left != nil {
+            bgView.snp.makeConstraints { (make) -> Void in
+                make.left.equalTo(self).offset((bgPosition?.left)!)
+                make.bottom.equalTo(self).offset(-(bgPosition?.bottom)!)
+            }
+            bgPosition = nil
+        }else {
+            bgView.snp.makeConstraints { (make) -> Void in
+                make.centerX.equalTo(self)
+                make.centerY.equalTo(self).offset(-90)
+            }
         }
-        
+
         
         if type == .TextType {
             
@@ -151,7 +182,15 @@ class KSPopView: UIView {
         
     }
     
-    func hiddenSelfView () {
+    private func removeAutoLayout () {
+        
+        titleLabel.snp.removeConstraints()
+        iconView.snp.removeConstraints()
+        bgView.snp.removeConstraints()
+
+    }
+    
+    private func hiddenSelfView () {
         
         weak var weakSelf:KSPopView! = self
         UIView.animate(withDuration: 0.2, animations: {

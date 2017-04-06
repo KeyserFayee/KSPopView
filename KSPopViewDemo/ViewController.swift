@@ -26,8 +26,12 @@ class ViewController: UIViewController {
         KSPopView.sharedInstance.showText(textStr: inputTextField.text!)
     }
     
+    @IBAction func showTextWithPosition(_ sender: Any) {
+        KSPopView.sharedInstance.showTextWithPosition(textStr: inputTextField.text!, position: (20,20))
+    }
+    
     @IBAction func showImageText(_ sender: Any) {
-        KSPopView.sharedInstance.showTextWithImage(textStr: inputTextField.text!, image: UIImage.init(named: "ic_success.png")!)
+        KSPopView.sharedInstance.showTextWithImage(textStr: inputTextField.text!, image: UIImage(named:"ic_success")!)
     }
 
 }
