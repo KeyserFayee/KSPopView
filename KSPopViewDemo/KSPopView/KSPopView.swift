@@ -36,7 +36,7 @@ class KSPopView: UIView {
         bgView.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.8)
         bgView.layer.cornerRadius = 5
         
-        titleLabel.preferredMaxLayoutWidth = 80
+        titleLabel.preferredMaxLayoutWidth = 90
         titleLabel.numberOfLines = 0
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 15)
