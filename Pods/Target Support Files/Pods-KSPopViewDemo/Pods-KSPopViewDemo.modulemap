@@ -1,0 +1,6 @@
+framework module Pods_KSPopViewDemo {
+  umbrella header "Pods-KSPopViewDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
