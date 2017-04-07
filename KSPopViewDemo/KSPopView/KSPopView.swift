@@ -15,7 +15,6 @@ let Screen_height = UIScreen.main.bounds.size.height
 enum popViewType {
     case TextType
     case ImageTextType
-    case GifTextType
 }
 
 
@@ -77,7 +76,7 @@ class KSPopView: UIView {
         }
     }
     
-    func showTextWithPosition(textStr:String, position:(left:Int,bottom:Int)) {
+    func showText(textStr:String, position:(left:Int,bottom:Int)) {
         if !isPopup {
             isPopup = true
             titleLabel.text = textStr
@@ -100,27 +99,49 @@ class KSPopView: UIView {
         }
     }
     
-    func showTextWithImage(textStr:String, image:UIImage) {
+    func showTextWithImage(textStr:String, imageName:String, dissmiss:Bool, needMask:Bool, containView:UIView) {
         if !isPopup {
             isPopup = true
             titleLabel.text = textStr
-            iconView.image = image
+            let imageData = try! Data(contentsOf:Bundle.main.url(forAuxiliaryExecutable: imageName)!)
+            let type = imageData.ks_imageFormat
+            
+            switch type {
+            case .GIF:
+                iconView.image = UIImage.gif(data: imageData)
+            case .JPEG,.PNG:
+                iconView.image = UIImage(named: imageName)
+            default:
+                break
+                
+            }
             
             setAutoLayout(.ImageTextType)
             self.iconView.isHidden = false
             self.alpha = 0.0
             weak var weakSelf:KSPopView! = self
-            UIApplication.shared.keyWindow?.insertSubview(self, at: 9999)
+            containView.insertSubview(self, at: 9999)
             UIView.animate(withDuration: 0.2, animations: {
-                weakSelf.alpha = 1.0;
+                if needMask {
+                    weakSelf.backgroundColor = .black
+                    weakSelf.alpha = 0.5
+                }else {
+                    weakSelf.alpha = 1.0;
+                }
                 
             }, completion: { (finished) -> Void in
-                let dispatchTime = DispatchTime.now() + .seconds(1)
-                DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-                    weakSelf.hiddenSelfView()
+                if dissmiss {
+                    let dispatchTime = DispatchTime.now() + .seconds(1)
+                    DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+                        weakSelf.hiddenSelfView()
+                    }
                 }
             })
         }
+    }
+    
+    func showTextWithImage(textStr:String, imageName:String, dissmiss:Bool, needMask:Bool) {
+        self.showTextWithImage(textStr: textStr, imageName: imageName, dissmiss: dissmiss, needMask:needMask, containView: UIApplication.shared.keyWindow!)
     }
     
     private func setAutoLayout (_ type:popViewType) {
@@ -176,7 +197,6 @@ class KSPopView: UIView {
                     make.bottom.equalTo(bgView).offset(-10)
                 }
             }
-        
         }
         
         
@@ -195,6 +215,7 @@ class KSPopView: UIView {
         weak var weakSelf:KSPopView! = self
         UIView.animate(withDuration: 0.2, animations: {
             weakSelf.alpha = 0.0
+            weakSelf.backgroundColor = .clear
             
         }, completion: { (finished) -> Void in
             weakSelf.removeFromSuperview()

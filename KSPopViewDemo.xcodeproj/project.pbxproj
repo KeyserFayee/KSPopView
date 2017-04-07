@@ -18,6 +18,9 @@
 		FB5216211E8E58E300132DE9 /* KSPopViewDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5216201E8E58E300132DE9 /* KSPopViewDemoUITests.swift */; };
 		FB5216301E8E591D00132DE9 /* KSPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB52162F1E8E591D00132DE9 /* KSPopView.swift */; };
 		FBBF85441E94EE9D001A246B /* ic_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBBF85431E94EE9D001A246B /* ic_success@2x.png */; };
+		FBBF85461E964722001A246B /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBF85451E964722001A246B /* UIImage+Gif.swift */; };
+		FBBF854A1E973D61001A246B /* Data+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBF85491E973D61001A246B /* Data+Format.swift */; };
+		FBBF854E1E977114001A246B /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FBBF854D1E977114001A246B /* loading.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		FB5216221E8E58E300132DE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB52162F1E8E591D00132DE9 /* KSPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPopView.swift; sourceTree = "<group>"; };
 		FBBF85431E94EE9D001A246B /* ic_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_success@2x.png"; sourceTree = "<group>"; };
+		FBBF85451E964722001A246B /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		FBBF85491E973D61001A246B /* Data+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Format.swift"; sourceTree = "<group>"; };
+		FBBF854D1E977114001A246B /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 		FB2BAD661E8FC49400374939 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				FBBF854D1E977114001A246B /* loading.gif */,
 				FBBF85431E94EE9D001A246B /* ic_success@2x.png */,
 				FB2BAD671E8FC49400374939 /* toast_bg@2x.png */,
 			);
@@ -159,8 +166,10 @@
 		FB52162E1E8E590A00132DE9 /* KSPopView */ = {
 			isa = PBXGroup;
 			children = (
-				FB2BAD661E8FC49400374939 /* resource */,
+				FBBF85491E973D61001A246B /* Data+Format.swift */,
+				FBBF85451E964722001A246B /* UIImage+Gif.swift */,
 				FB52162F1E8E591D00132DE9 /* KSPopView.swift */,
+				FB2BAD661E8FC49400374939 /* resource */,
 			);
 			path = KSPopView;
 			sourceTree = "<group>";
@@ -290,6 +299,7 @@
 				FB52160B1E8E58E300132DE9 /* LaunchScreen.storyboard in Resources */,
 				FB5216081E8E58E300132DE9 /* Assets.xcassets in Resources */,
 				FB5216061E8E58E300132DE9 /* Main.storyboard in Resources */,
+				FBBF854E1E977114001A246B /* loading.gif in Resources */,
 				FB2BAD681E8FC49400374939 /* toast_bg@2x.png in Resources */,
 				FBBF85441E94EE9D001A246B /* ic_success@2x.png in Resources */,
 			);
@@ -366,6 +376,8 @@
 			files = (
 				FB5216031E8E58E300132DE9 /* ViewController.swift in Sources */,
 				FB5216301E8E591D00132DE9 /* KSPopView.swift in Sources */,
+				FBBF854A1E973D61001A246B /* Data+Format.swift in Sources */,
+				FBBF85461E964722001A246B /* UIImage+Gif.swift in Sources */,
 				FB5216011E8E58E300132DE9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
