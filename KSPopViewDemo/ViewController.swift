@@ -36,6 +36,11 @@ class ViewController: UIViewController {
 
     @IBAction func showGifText(_ sender: Any) {
         KSPopView.sharedInstance.showTextWithImage(textStr: inputTextField.text!, imageName: "loading.gif", dissmiss:false, needMask:false)
+        
+        let dispatchTime = DispatchTime.now() + .seconds(3)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            KSPopView.sharedInstance.hidePopView()
+        }
     }
 }
 
