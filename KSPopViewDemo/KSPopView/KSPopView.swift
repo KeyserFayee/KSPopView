@@ -144,6 +144,10 @@ class KSPopView: UIView {
         self.showTextWithImage(textStr: textStr, imageName: imageName, dissmiss: dissmiss, needMask:needMask, containView: UIApplication.shared.keyWindow!)
     }
     
+    func hidePopView () {
+        self.hiddenSelfView()
+    }
+    
     private func setAutoLayout (_ type:popViewType) {
         
         removeAutoLayout()

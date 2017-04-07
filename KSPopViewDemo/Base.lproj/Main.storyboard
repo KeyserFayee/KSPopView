@@ -29,6 +29,14 @@
                                     <action selector="showText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9uT-Q5-Nei"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omu-AO-QOU">
+                                <rect key="frame" x="231" y="293" width="86" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="文本+动态图"/>
+                                <connections>
+                                    <action selector="showGifText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="huN-n8-wwE"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-uM-Q0l">
                                 <rect key="frame" x="231" y="246" width="86" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,14 +58,6 @@
                                 <state key="normal" title="纯文本(位置可变)"/>
                                 <connections>
                                     <action selector="showTextWithPosition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SRd-xk-rUt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omu-AO-QOU">
-                                <rect key="frame" x="231" y="293" width="86" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="文本+动态图"/>
-                                <connections>
-                                    <action selector="showGifText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="huN-n8-wwE"/>
                                 </connections>
                             </button>
                         </subviews>
